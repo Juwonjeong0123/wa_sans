@@ -79,39 +79,6 @@ class Simulation:
         # 한 스텝 후 모든 몸체의 위치 반환
         return [(b.x, b.y, b.z) for b in self.bodies]
 
-"""    def update(self):
-        self.celestial[0].v += self.force(self.celestial[0], self.celestial[1]) \
-            / self.celestial[0].mass * self.dt_time
-        self.celestial[0].x += self.net_force(self.celestial[0], self.celestial[1])[0] * self.celestial[0].v * self.dt_time
-        self.celestial[0].y += self.net_force(self.celestial[0], self.celestial[1])[1] * self.celestial[0].v * self.dt_time
-        self.celestial[0].z += self.net_force(self.celestial[0], self.celestial[1])[2] * self.celestial[0].v * self.dt_time
-
-        # print(self.celestial[0].v)
-        # print(self.celestial[0].x, self.celestial[0].y, self.celestial[0].z)
-        
-        return [self.celestial[0].x,  self.celestial[0].y, self.celestial[0].z]
-
-
-    def force(self, a, b):
-        if math.sqrt((b.x - a.x) ** 2 + (b.y - a.y) ** 2 + (b.z - a.z) ** 2) == 0:
-            return 0
-
-        return G * a.mass * b.mass / math.sqrt((b.x - a.x) ** 2 + (b.y - a.y) ** 2 + (b.z - a.z) ** 2)
-
-    def net_force(self, a, b):
-        vec = [b.x - a.x, b.y - a.y, b.z - a.z]
-        r = math.sqrt(((b.x - a.x) ** 2) + ((b.y - a.y) ** 2) * ((b.z - a.z) ** 2))
-
-        if r == 0:
-            return [0, 0, 0]
-        
-        vec[0] = vec[0]/r 
-        vec[1] = vec[1]/r 
-        vec[2] = vec[2]/r
-
-        return vec
-"""
-
 dt = 3600.0 
 # dt = 3600.0 * 24
 sim = Simulation(bodies, dt)
@@ -150,60 +117,6 @@ ax.set_zlabel('z (m)')
 ax.set_title('All orbits (1 year, dt=1 hour)')
 ax.legend()
 plt.show()
-
-"""
-xs1 = []
-ys1 = []
-zs1 = []
-xs2 = []
-ys2 = []
-zs2 = []
-xs3 = []
-ys3 = []
-zs3 = []
-
-
-for _ in range(steps):
-    x1, y1, z1 = sim.step(0)
-    xs1.append(x1)
-    ys1.append(y1)
-    zs1.append(z1)
-for _ in range(steps):
-    x2, y2, z2 = sim.step(1)
-    xs2.append(x2)
-    ys2.append(y2)
-    zs2.append(z2)
-for _ in range(steps):
-    x3, y3, z3 = sim.step(2)
-    xs3.append(x3)
-    ys3.append(y3)
-    zs3.append(z3)
-
-
-
-li = [earth, sun]
-
-simulation = Simulation(1, G, li, 1)
-
-um_ma = [[], [], []]
-
-
-for i in range(60*60*1, 24*365):
-    um_ma[0].append(simulation.update()[0])
-    um_ma[1].append(simulation.update()[1])
-    um_ma[2].append(simulation.update()[2])
-
-fig = plt.figure()
-ax = fig.add_subplot(111, projection='3d')
-ax.plot(xs1, ys1, zs1, color='red')
-ax.plot(xs2, ys2, zs2, color='blue')
-ax.plot(xs3, ys3, zs3, color='yellow')
-ax.set_xlabel('x (m)')
-ax.set_ylabel('y (m)')
-ax.set_zlabel('z (m)')
-ax.set_title("sans")
-plt.show()
-"""
 
 
 
